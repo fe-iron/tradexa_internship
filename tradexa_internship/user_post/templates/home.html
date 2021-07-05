@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Create Post</title>
+  <link rel="stylesheet" href="{% static 'my_style.css' %}">
+</head>
+<body>
+<a href="logout"><button id="button-logout" style="float:right; margin:0;">Logout</button></a>
+<form class="form" action="/product/post_create" method="post">
+  {% csrf_token %}
+  <h2>Create Post</h2>
+  <h3 style="color: green; font-weight: 500;">Hi, {{request.user}}</h3>
+  {% for msg in messages %}
+    <p style="color: green; font-weight: 500;">{{msg}}</p>
+  {% endfor %}
+
+  <p type="Your Name:"><input placeholder="Write your name here.." name="name"></p>
+  <p type="Product Name:"><input placeholder="Write the name of product here.." name="pname"></p>
+  <p type="Weight:"><input placeholder="Write weight of the product here.." name="weight"></p>
+  <p type="Price:"><input placeholder="Write price of the product here.." name="price"></p>
+  <p type="Message:"><input placeholder="What would you like to tell us.." name="message"></p>
+  <button type="submit">Create Post</button>
+  <div>
+    <span class="fa fa-phone"></span>001 1023 567
+    <span class="fa fa-envelope-o"></span> contact@company.com
+  </div>
+</form>
+</body>
+</html>
